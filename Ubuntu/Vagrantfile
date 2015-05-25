@@ -1,0 +1,45 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.box_check_update = true
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  # config.vm.network "private_network", ip: "192.168.33.10"
+  # config.vm.network "public_network"
+
+  config.vm.provider "virtualbox" do |vb|
+
+    vb.name = "Simple Django Testbed"
+    vb.gui = false
+    vb.cpus = 1
+    vb.memory = 1024
+
+  end
+
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+
+    # Sync repositories
+    sudo apt-get update
+
+    # Install Ansible
+    sudo apt-get install -y software-properties-common
+    sudo apt-add-repository ppa:ansible/ansible
+    sudo apt-get update
+    sudo apt-get install -y ansible
+
+    # Ensure python output is printed as execution occurs
+    export PYTHONUNBUFFERED=1
+
+    # Provision VM with Ansible using 127.0.0.1 as the hosts inventory
+    INVENTORY=$(mktemp -t XXXXX.hosts)
+    echo 127.0.0.1 > $INVENTORY
+    ansible-playbook /vagrant/playbooks/ansible.yml -u vagrant -i $INVENTORY --connection=local
+
+    # Clean up
+    rm $INVENTORY
+
+  SHELL
+
+end
