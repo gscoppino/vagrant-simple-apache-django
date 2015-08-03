@@ -5,7 +5,7 @@ Purposefully made as barebones as possible, all this does is prepare the virtual
 Basic project setup workflow:
 
 Scaffold a Django app:
-- cd into the ```/vagrant/web_stack_server_side``` directory.
+- cd into the ```/vagrant/backend``` directory.
 
 - run ```django-admin.py startproject PROJECT_NAME .``` (the dot denotes to use this directory as the root).
 
@@ -30,27 +30,27 @@ Configure Apache to serve static files and communicate via project WSGI configur
 Configure WSGI (Append in VirtualHost section)
 
 - ```
-<Directory /vagrant/web_stack/server_side/PROJECT_NAME>
+<Directory /vagrant/backend/PROJECT_NAME>
     <Files wsgi.py>
         Require all granted
     </Files>
 </Directory>
 ``` This will give permissions for wsgi.py
 
-- ```WSGIScriptAlias / /vagrant/web_stack/server_side/PROJECT_NAME/wsgi.py``` This will alias root to WSGI handler
+- ```WSGIScriptAlias / /vagrant/backend/PROJECT_NAME/wsgi.py``` This will alias root to WSGI handler
 
-- ```WSGIDaemonProcess PROJECT_NAME python-path=/vagrant/web_stack/server_side``` Run WSGI as daemon process
+- ```WSGIDaemonProcess PROJECT_NAME python-path=/vagrant/backend``` Run WSGI as daemon process
 
 - ```WSGIProcessGroup PROJECT_NAME``` process group thing
 
 Configure static files (Append in VirtualHost section)
 
 - ```
-<Directory /vagrant/web_stack/server_side/static>
+<Directory /vagrant/backend/static>
     Require all granted
 </Directory>
 ``` Give permissions to static
 
-- ```Alias /static /vagrant/web_stack/server_side/static``` Alias static root to Django static folder
+- ```Alias /static /vagrant/backend/static``` Alias static root to Django static folder
 
-- ```sudo service httpd restart``` restart httpd 
+- ```sudo service httpd restart``` restart httpd
