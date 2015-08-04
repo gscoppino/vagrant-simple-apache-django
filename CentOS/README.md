@@ -14,8 +14,9 @@ Scaffold a Django app:
 - ```./manage.py migrate```
 - ```./manage.py createsuperuser```
 - ```./manage.py collectstatic```
-Configure Apache to serve static files and communicate via project WSGI configuration
-(Ubuntu)
+
+Configure httpd to serve static files and communicate via project WSGI configuration
+(CentOS)
 
 - cd into ```/etc/httpd/conf.d/``` and create a file to edit called ```virtualhost.conf```
 

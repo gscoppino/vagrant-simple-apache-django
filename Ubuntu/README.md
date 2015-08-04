@@ -14,6 +14,7 @@ Scaffold a Django app:
 - ```./manage.py migrate```
 - ```./manage.py createsuperuser```
 - ```./manage.py collectstatic```
+
 Configure Apache to serve static files and communicate via project WSGI configuration
 (Ubuntu)
 
