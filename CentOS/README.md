@@ -2,23 +2,27 @@ Simple CentOS 7 virtual environment with Apache configured to work with Django t
 
 Purposefully made as barebones as possible, all this does is prepare the virtual environment, with all the requisite packages installed.
 
-Basic project setup workflow:
+# Basic project setup
 
-Scaffold a Django app:
-- cd into the ```/vagrant/backend``` directory.
+## Scaffold a Django application
 
-- run ```django-admin.py startproject PROJECT_NAME .``` (the dot denotes to use this directory as the root).
+- change directory into ```/vagrant/backend```.
 
-- edit ```PROJECT_NAME/settings.py``` and set a ```STATIC_ROOT``` location for static files to be dumped.
-- ```./manage.py makemigrations```
-- ```./manage.py migrate```
-- ```./manage.py createsuperuser```
-- ```./manage.py collectstatic```
+- run ```django-admin.py startproject PROJECT_NAME .``` (the dot denotes to use the current directory as the root of the project).
 
-Configure httpd to serve static files and communicate via project WSGI configuration
-(CentOS)
+- edit ```PROJECT_NAME/settings.py``` and set the ```STATIC_ROOT``` variable to dictate where static files are to be dumped.
 
-- cd into ```/etc/httpd/conf.d/``` and create a file to edit called ```virtualhost.conf```
+- Create initial database migrations: ```./manage.py makemigrations```
+
+- Apply migrations to the database: ```./manage.py migrate```
+
+- Create a superuser: ```./manage.py createsuperuser```
+
+- Management command to collect static files: ```./manage.py collectstatic```
+
+## Configure VirtualHost
+
+- change directory into ```/etc/httpd/conf.d/``` and create a file called ```virtualhost.conf```
 
 - Scaffold the file as such:
 ```
@@ -28,7 +32,7 @@ Configure httpd to serve static files and communicate via project WSGI configura
 </VirtualHost>
 ```
 
-Configure WSGI (Append in VirtualHost section)
+## Configure WSGI (Append in VirtualHost section)
 
 - ```
 <Directory /vagrant/backend/PROJECT_NAME>
@@ -44,7 +48,7 @@ Configure WSGI (Append in VirtualHost section)
 
 - ```WSGIProcessGroup PROJECT_NAME``` process group thing
 
-Configure static files (Append in VirtualHost section)
+## Configure static files (Append in VirtualHost section)
 
 - ```
 <Directory /vagrant/backend/static>
