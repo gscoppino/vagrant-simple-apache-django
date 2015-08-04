@@ -1,0 +1,1 @@
+Simple Apache + Django configuration for Red Hat and Debian based environments.
