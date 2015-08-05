@@ -1,4 +1,4 @@
-Simple CentOS 7 virtual environment with Apache configured to work with Django through WSGI.
+Simple CentOS 7 virtual environment for Apache configured to work with Django through WSGI.
 
 Purposefully made as barebones as possible, all this does is prepare the virtual environment, with all the requisite packages installed.
 
@@ -8,17 +8,23 @@ Purposefully made as barebones as possible, all this does is prepare the virtual
 
 - change directory into ```/vagrant/backend```.
 
-- run ```django-admin.py startproject PROJECT_NAME .``` (the dot denotes to use the current directory as the root of the project).
+### Start a new project
 
-- edit ```PROJECT_NAME/settings.py``` and set the ```STATIC_ROOT``` variable to dictate where static files are to be dumped.
+- Run```django-admin.py startproject PROJECT_NAME .``` (the dot denotes to use the current directory as the root of the project).
 
-- Create initial database migrations: ```./manage.py makemigrations```
+### Project configuration
 
-- Apply migrations to the database: ```./manage.py migrate```
+- Open ```PROJECT_NAME/settings.py```.
 
-- Create a superuser: ```./manage.py createsuperuser```
+#### Database ####
 
-- Management command to collect static files: ```./manage.py collectstatic```
+    - ```DATABASES['default']```: Provide information for your database management system here.
+
+#### Static Files ####
+
+    - ```STATIC_URL```: The directory Django will look in for static files within ```INSTALLED_APPS``` when using ```./manage.py runserver``` or ```./manage.py collectstatic```.
+
+    - ```STATIC_ROOT```: Where Django will dump static files it finds via ```./ manage.py collectstatic```.
 
 ## Configure VirtualHost
 
