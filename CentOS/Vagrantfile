@@ -6,12 +6,9 @@ Vagrant.configure(2) do |config|
   config.vm.box = "chef/centos-7.0"
   config.vm.box_check_update = true
   config.vm.network "forwarded_port", guest: 80, host: 8080
-  # config.vm.network "private_network", ip: "192.168.33.10"
-  # config.vm.network "public_network"
 
   config.vm.provider "virtualbox" do |vb|
 
-    vb.name = "Simple Django Testbed"
     vb.gui = false
     vb.cpus = 1
     vb.memory = 1024
@@ -20,17 +17,19 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
 
-    # Install Ansible
+    # (Ansible Playbook) Ensure python output is printed as execution occurs.
+    # (Ansible Playbook) Specify what Ansible Playbook is running against.
+    export PYTHONUNBUFFERED=1
+
+    INVENTORY=$(mktemp -t XXXXX.hosts)
+    echo 127.0.0.1 > $INVENTORY
+
+    # Ensure Ansible is installed.
     sudo yum install -y epel-release
     sudo yum install -y ansible
 
-    # Ensure python output is printed as execution occurs
-    export PYTHONUNBUFFERED=1
-
-    # Provision VM with Ansible using 127.0.0.1 as the hosts inventory
-    INVENTORY=$(mktemp -t XXXXX.hosts)
-    echo 127.0.0.1 > $INVENTORY
-    ansible-playbook /vagrant/server/provision/ansible.yml -u vagrant -i $INVENTORY --connection=local
+    # Run Ansible provisioner.
+    ansible-playbook /vagrant/server/provision/ansible.yml --connection=local -i $INVENTORY -u vagrant
 
     # Clean up
     rm $INVENTORY
