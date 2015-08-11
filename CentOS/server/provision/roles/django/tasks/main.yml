@@ -1,0 +1,9 @@
+---
+
+- name: Latest version of pip will be present.
+  yum: name=python-pip state=latest
+  sudo: yes
+
+- name: Django 1.8 will be present.
+  pip: name=Django version=1.8 state=present
+  sudo: yes

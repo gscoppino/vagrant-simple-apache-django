@@ -1,0 +1,10 @@
+---
+
+- name: Apache and Python WSGI will be present.
+  yum: name={{ item }} state=present
+  with_items: [httpd, mod_wsgi]
+  sudo: yes
+
+- name: httpd daemon will be running.
+  service: name=httpd state=restarted enabled=yes
+  sudo: yes
