@@ -5,6 +5,10 @@
   with_items: [httpd, mod_wsgi]
   sudo: yes
 
+- name: VirtualHost will be configured.
+  copy: src=virtualhost.conf dest=/etc/httpd/conf.d/virtualhost.conf
+  sudo: yes
+
 - name: httpd daemon will be running.
   service: name=httpd state=restarted enabled=yes
   sudo: yes
