@@ -4,3 +4,11 @@
   roles:
     - apache
     - django
+  tasks:
+    - name: A project will exist.
+      stat: path=/vagrant/backend/manage.py
+      register: manage
+
+    - name: Good to go!
+      command: django-admin.py startproject project . chdir=/vagrant/backend
+      when: manage.stat.exists is not defined or manage.stat.exists == False

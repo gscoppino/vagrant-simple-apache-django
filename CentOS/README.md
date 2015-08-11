@@ -1,16 +1,13 @@
 Simple CentOS 7 virtual environment for Apache configured to work with Django through WSGI.
 
-Purposefully made as barebones as possible, all this does is prepare the virtual environment, with all the requisite packages installed.
+Purposefully made as barebones as possible.
 
 # Basic project setup
 
 ## Scaffold a Django application
 
-- change directory into ```/vagrant/backend```.
-
-### Start a new project
-
-- Run```django-admin.py startproject PROJECT_NAME .``` (the dot denotes to use the current directory as the root of the project).
+- A new project called ```project``` will automatically be created for you in ```/vagrant/backend``` if
+the provisioner doesn't find a ```manage.py``` file in that location.
 
 ### Project configuration
 
