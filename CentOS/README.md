@@ -24,3 +24,7 @@ the provisioner doesn't find a ```manage.py``` file in that location.
 ## Configure the server
 
 - The VirtualHost configuration can be found server/provision/roles/apache/files. If you customize it (for example, to change the path to wsgi.py if you imported your own project or changed the project name), make sure to run ```vagrant provision```, which will copy it into the virtual machine.
+
+## Working with the virtual machine from outside the VM
+
+- Helper scripts for common tasks live in ```server/utils```.
