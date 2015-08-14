@@ -5,10 +5,11 @@
     - apache
     - django
   tasks:
-    - name: A project will exist.
-      stat: path=/vagrant/backend/manage.py
-      register: manage
+    - stat: path=/vagrant/backend/manage.py
+      register: project
 
-    - name: Good to go!
+    - name: A project will exist.
       command: django-admin.py startproject project . chdir=/vagrant/backend
-      when: manage.stat.exists is not defined or manage.stat.exists == False
+      notify:
+        - Restart Server
+      when: project.stat.exists is not defined or project.stat.exists == False
