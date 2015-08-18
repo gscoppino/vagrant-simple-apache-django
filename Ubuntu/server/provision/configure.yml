@@ -5,16 +5,11 @@
   roles:
     - apache
     - django
+    - django_init
   tasks:
-    - stat: path=/vagrant/backend/manage.py
-      register: project
 
     - stat: path=/vagrant/backend/requirements.txt
       register: reqs
-
-    - name: A project will exist.
-      command: django-admin.py startproject project . chdir=/vagrant/backend
-      when: project.stat.exists is not defined or project.stat.exists == False
 
     - name: A project requirements file will exist.
       command: cp /vagrant/server/provision/roles/django/files/requirements.txt /vagrant/backend/requirements.txt
