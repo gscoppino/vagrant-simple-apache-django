@@ -1,8 +1,0 @@
----
-
-- stat: path=/vagrant/backend/manage.py
-  register: project
-
-- name: A project will exist.
-  command: django-admin.py startproject project . chdir=/vagrant/backend
-  when: project.stat.exists is not defined or project.stat.exists == False
