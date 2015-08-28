@@ -2,3 +2,6 @@
 
 - name: A project will exist.
   command: django-admin.py startproject project . chdir=/vagrant/backend
+
+- name: Django collectstatic will be configured for the correct directory.
+  lineinfile: dest=/vagrant/backend/project/settings.py line="STATIC_ROOT = /vagrant/backend/static/" state=present
