@@ -13,7 +13,7 @@ sudo apt-get update
 # Ensure software-properties-common is installed (so we can add the Ansible PPA)
 sudo apt-get install -y software-properties-common
 
-# Add the Ansible PPA if it is not already present;
+# Add the Ansible PPA if it is not already present
 if ! grep -q "ansible" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
   sudo apt-add-repository ppa:ansible/ansible
   sudo apt-get update

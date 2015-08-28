@@ -1,0 +1,4 @@
+---
+
+- name: A project will exist.
+  command: django-admin.py startproject project . chdir=/vagrant/backend
