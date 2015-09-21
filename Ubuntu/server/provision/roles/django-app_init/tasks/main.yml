@@ -1,0 +1,23 @@
+---
+
+- stat: path={{ backend }}/manage.py
+  register: project
+
+- stat: path={{ backend }}/requirements.txt
+  register: project_requirements
+
+- name: A project will exist.
+  shell: . {{ backend_env }}/bin/activate && django-admin.py startproject project . chdir={{ backend }}
+  when: project.stat.exists is not defined or project.stat.exists == False
+
+- name: A project requirements file will exist.
+  shell: . {{ backend_env }}/bin/activate && pip freeze > requirements.txt chdir={{ backend }}
+  when: project_requirements.stat.exists is not defined or project_requirements.stat.exists == False
+
+- name: Project requirements shall be installed.
+  pip: requirements={{ backend }}/requirements.txt virtualenv={{ backend_env }}
+
+- name: Project schema shall be applied to database engine.
+  shell: . {{ backend_env }}/bin/activate && python manage.py migrate chdir={{ backend }}
+
+- command: echo "Make sure to configure STATIC_ROOT in project settings!"
