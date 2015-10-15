@@ -11,16 +11,7 @@
 
   tasks:
 
-    - name: Pretend there's something else to do.
-      yum: name=sl
-      become: yes
-      become_method: sudo
-
-    - name: Have A Good One!
-      command: sl
-
-  post_tasks:
-
-    - command: echo 'Good to go!'
+    - name: Nearly done!
+      shell: echo 'Placeholder for some closing notes'
       notify:
         - Restart Server
