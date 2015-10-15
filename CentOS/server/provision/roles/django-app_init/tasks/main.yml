@@ -20,4 +20,8 @@
 - name: Project schema shall be applied to database engine.
   shell: . {{ backend_env }}/bin/activate && python manage.py migrate chdir={{ backend }}
 
-- command: echo "Make sure to configure STATIC_ROOT in project settings!"
+- name: Ensure STATIC_ROOT is set in project settings.
+  shell: grep -qF "STATIC_ROOT" settings.py || echo "STATIC_ROOT = os.path.join(BASE_DIR, 'static')" >> settings.py chdir={{ backend }}/project
+
+- name: Project static files will be collected.
+  shell: . {{ backend_env }}/bin/activate && python manage.py collectstatic --noinput chdir={{ backend }}
