@@ -13,8 +13,8 @@
 - name: A virtualenv will exist.
   command: virtualenv project_env chdir=/home/vagrant
 
-- name: Django 1.8 will be present in the virtualenv.
-  pip: name=Django version=1.8 state=present virtualenv={{ backend_env }}
+- name: Django will be present in the virtualenv.
+  pip: name=Django state=present virtualenv={{ backend_env }}
   become: yes
   become_method: sudo
 
