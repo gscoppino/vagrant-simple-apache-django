@@ -1,5 +1,9 @@
 Simple Apache + Django configuration for Red Hat and Debian based environments. It can be used to kickstart new projects or to import existing projects into a more reproducible environment.
 
+Requirements:
+
+* Vagrant 1.8+
+
 Get Started:
 
 - Do a shallow clone for speed: ```git clone https://github.com/gscoppino/vagrant-simple-apache-django --depth=1```
