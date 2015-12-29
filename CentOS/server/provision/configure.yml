@@ -6,8 +6,8 @@
   roles:
 
     - apache-server
+    - django-framework
     - django-app
-    - django-app_init
 
   tasks:
 
