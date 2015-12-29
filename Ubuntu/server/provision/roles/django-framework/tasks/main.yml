@@ -1,0 +1,19 @@
+---
+
+- name: Latest version of pip will be present.
+  apt: name=python-pip state=latest
+  become: yes
+  become_method: sudo
+
+- name: Python virtualenv package will be present.
+  pip: name=virtualenv state=present
+  become: yes
+  become_method: sudo
+
+- name: A virtualenv will exist.
+  command: virtualenv project_env chdir=/home/vagrant
+
+- name: Django will be present in the virtualenv.
+  pip: name=Django state=present virtualenv={{ backend_env }}
+  become: yes
+  become_method: sudo
