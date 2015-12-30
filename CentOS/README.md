@@ -39,6 +39,11 @@ Helper scripts for common tasks live in `server/utils` directory.
 
 Stored in `backend/PROJECT_NAME/settings.py`.
 
+### Project Admin Configuration ###
+
+Run `python manage.py createsuperuser` in the VM after activating the
+virtualenv via `./home/vagrant/project_env/bin/activate`.
+
 ### Project Database Configuration ####
 
 `DATABASES['default']`: Provide information for your database
