@@ -22,21 +22,18 @@ the root of your project.
 Get Started:
 
 * Do a shallow clone of the repo (for speed):
-```git clone https://github.com/gscoppino/vagrant-simple-apache-django --depth=1```
-* Copy either the ```Ubuntu``` or ```CentOS``` directory to the location you
+`git clone https://github.com/gscoppino/vagrant-simple-apache-django --depth=1`
+* Copy either the Ubuntu` or `CentOS` directory to the location you
 want to keep your project in, and rename the directory to whatever you like.
-* Optional: Remove/Replace/Modify the ```README```.
-* Optional: Copy in an existing project into the ```backend``` directory.
-```manage.py``` is mandatory if you want to import an existing project and
-should be directly under the ```backend``` directory.
-* This is a good time to run ```git init``` and create a ```.gitignore``` so you
-can effectively revision control your project.
+* Follow the README for your choice of VM.
+* Consider removing/replacing/modifying the `README` and initializing a new git
+repo in the folder for your project.
 
 Usage:
 
-* ```vagrant up``` :  When you are ready to spin up the server. If a project
-doesn't exist one will be created in the ```backend``` directory.
-* ```vagrant provision``` : can be used to bring the virtual machine to a new
+* `vagrant up` :  When you are ready to spin up the server. If a project
+doesn't exist one will be created in the `backend` directory.
+* `vagrant provision` : can be used to bring the virtual machine to a new
 desired state without starting from scratch. If changing a configuration file
-(such as the Apache config, or your ```requirements.txt```), just run
-```vagrant provision``` to get the machine to the state it needs to be in.
+(such as the Apache config, or your `requirements.txt`), just run
+`vagrant provision` to get the machine to the state it needs to be in.
