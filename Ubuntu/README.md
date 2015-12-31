@@ -41,7 +41,8 @@ Stored in `backend/PROJECT_NAME/settings.py`.
 
 ### Project Admin Configuration ###
 
-Run `python manage.py createsuperuser` in the VM after activating the
+Create a superuser using `server/utils/createsuperuser`. Alternatively,
+run `python manage.py createsuperuser` in the VM after activating the Python
 virtualenv via `./home/vagrant/project_env/bin/activate`.
 
 ### Project Database Configuration ####
