@@ -41,9 +41,12 @@ Stored in `backend/PROJECT_NAME/settings.py`.
 
 ### Project Admin Configuration ###
 
-Create a superuser using `server/utils/django-admin createsuperuser`. Alternatively,
-run `python manage.py createsuperuser` in the VM after activating the Python
-virtualenv via `./home/vagrant/project_env/bin/activate`.
+Create a superuser using `server/utils/django-admin createsuperuser`.
+Alternatively, if you wish to do this from within the VM:
+* SSH into the VM: `vagrant ssh`.
+* Activate the virtualenv: `./home/vagrant/project_env/bin/activate`.
+* Change directory to `/vagrant/backend`.
+* run `python manage.py createsuperuser`.
 
 ### Project Database Configuration ####
 
