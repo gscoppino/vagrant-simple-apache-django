@@ -23,7 +23,7 @@ Get Started:
 
 * Do a shallow clone of the repo (for speed):
 `git clone https://github.com/gscoppino/vagrant-simple-apache-django --depth=1`
-* Copy either the Ubuntu` or `CentOS` directory to the location you
+* Copy either the `Ubuntu` or `CentOS` directory to the location you
 want to keep your project in, and rename the directory to whatever you like.
 * Follow the README for your choice of VM.
 * Consider removing/replacing/modifying the `README` and initializing a new git
