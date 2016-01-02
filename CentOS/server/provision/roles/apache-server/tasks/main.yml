@@ -10,3 +10,11 @@
   copy: src=virtualhost.conf dest=/etc/httpd/conf.d/virtualhost.conf
   become: yes
   become_method: sudo
+
+- name: Add the Apache user to the vagrant users group.
+  command: usermod -a -G vagrant apache
+  become: yes
+  become_method: sudo
+
+- name: Give Apache execute permissions for VirtualEnv.
+  command: chmod 710 /home/vagrant
