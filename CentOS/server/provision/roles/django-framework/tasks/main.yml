@@ -17,11 +17,3 @@
   pip: name=Django state=present virtualenv={{ backend_env }}
   become: yes
   become_method: sudo
-
-- name: Add the Apache user to the vagrant users group.
-  command: usermod -a -G vagrant apache
-  become: yes
-  become_method: sudo
-
-- name: Give Apache execute permissions for VirtualEnv.
-  command: chmod 710 /home/vagrant
