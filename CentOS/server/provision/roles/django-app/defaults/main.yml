@@ -1,4 +1,4 @@
 ---
 
-backend: /vagrant/backend
+backend: /vagrant/server/app
 backend_env: /home/vagrant/project_env
