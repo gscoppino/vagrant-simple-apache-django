@@ -7,7 +7,7 @@
   register: project_requirements
 
 - name: A project will exist.
-  shell: . {{ backend_env }}/bin/activate && django-admin.py startproject project . chdir={{ backend }}
+  shell: . {{ backend_env }}/bin/activate && django-admin.py startproject app . chdir={{ backend }}
   when: project.stat.exists is not defined or project.stat.exists == False
 
 - name: A project requirements file will exist.
@@ -20,8 +20,16 @@
 - name: Project schema shall be applied to database engine.
   shell: . {{ backend_env }}/bin/activate && python manage.py migrate chdir={{ backend }}
 
+- name: Ensure STATIC_URL points to server assets correctly when client and server are coupled.
+  script: set_static_url.sh {{ backend }}/app
+  when: backend_as_a_service == false
+
+- name: Ensure STATIC_URL points to server assets correctly when client and server are separated.
+  script: set_static_url_baas.sh {{ backend }}/app
+  when: backend_as_a_service == true
+
 - name: Ensure STATIC_ROOT is set in project settings.
-  shell: grep -qF "STATIC_ROOT" settings.py || echo "STATIC_ROOT = os.path.join(BASE_DIR, 'static')" >> settings.py chdir={{ backend }}/project
+  script: set_static_root.sh {{ backend }}/app
 
 - name: Project static files will be collected.
   shell: . {{ backend_env }}/bin/activate && python manage.py collectstatic --noinput chdir={{ backend }}

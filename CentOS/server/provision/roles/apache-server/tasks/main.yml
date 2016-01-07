@@ -6,10 +6,17 @@
   become: yes
   become_method: sudo
 
-- name: VirtualHost will be configured.
+- name: VirtualHost will be configured for coupling of client and server.
   copy: src=virtualhost.conf dest=/etc/httpd/conf.d/virtualhost.conf
   become: yes
   become_method: sudo
+  when: backend_as_a_service == false
+
+- name: VirtualHost will be configured for separation of client and server.
+  copy: src=virtualhost_baas.conf dest=/etc/httpd/conf.d/virtualhost.conf
+  become: yes
+  become_method: sudo
+  when: backend_as_a_service == true
 
 - name: Add the Apache user to the vagrant users group.
   command: usermod -a -G vagrant apache
