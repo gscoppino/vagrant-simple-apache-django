@@ -18,11 +18,11 @@
   shell: npm init -y
   when: project.stat.exists is not defined or project.stat.exists == False and backend_as_a_service == true
   args:
-    chdir: {{ frontend_baas }}
+    chdir: "{{ frontend_baas }}"
     creates: package.json
 
 - name: (BaaS) NPM dependencies will be installed.
   shell: npm install
   when: backend_as_a_service == true
   args:
-    chdir: {{ frontend_baas }}
+    chdir: "{{ frontend_baas }}"

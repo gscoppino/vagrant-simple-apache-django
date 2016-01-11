@@ -16,9 +16,9 @@
     # Uncomment to enable package.json and NPM install (BaaS only)
     # - npm-frontend
 
-  tasks:
+  post_tasks:
 
-    - name: Nearly done!
-      shell: echo 'Placeholder for some closing notes'
+    - name: Provisioning has completed!
+      shell: "true"
       notify:
         - Restart Server
