@@ -36,6 +36,9 @@ of your project folder. The `manage.py` script for the project should be in the 
 eg. `server/app/manage.py`.
 * (optional) Open `server/provision/settings.yml` and set `backend_as_a_service` to `true`
 to configure your project that way.
+* (optional) There is also support for automated `package.json` creation and `npm install`
+operations for project frontend if the project is configured with `backend_as_service: true`.
+You'll have to opt-in by enabling the `npm-packagemanager` and `npm-frontend` roles in `configure.yml`.
 * Run `vagrant up` from your project folder.
 
 # Basic Usage:
