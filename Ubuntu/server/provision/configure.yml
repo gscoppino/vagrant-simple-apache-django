@@ -10,11 +10,7 @@
 
     - apache-server
     - django-framework
-    # Uncomment to enable installation of NPM.
-    # - npm-packagemanager
     - django-app
-    # Uncomment to enable package.json and NPM install (BaaS only).
-    # - npm-frontend
 
   post_tasks:
 

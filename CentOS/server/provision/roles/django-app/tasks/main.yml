@@ -20,13 +20,8 @@
 - name: Project schema shall be applied to database engine.
   shell: . {{ backend_env }}/bin/activate && python manage.py migrate chdir={{ backend }}
 
-- name: Ensure STATIC_URL points to server assets correctly when client and server are coupled.
+- name: Ensure STATIC_URL points to server assets correctly.
   script: set_settings_variable.sh -d {{ backend }}/app -k "STATIC_URL" -v "\"'\/static\/'\""
-  when: backend_as_a_service == false
-
-- name: Ensure STATIC_URL points to server assets correctly when client and server are separated.
-  script: set_settings_variable.sh -d {{ backend }}/app -k "STATIC_URL" -v "\"'\/static\/backend\/'\""
-  when: backend_as_a_service == true
 
 - name: Ensure STATIC_ROOT is set in project settings.
   script: set_settings_variable.sh -d {{ backend }}/app -k "STATIC_ROOT" -v "\"os.path.join(BASE_DIR, 'static')\""
