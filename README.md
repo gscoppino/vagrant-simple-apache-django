@@ -19,15 +19,11 @@ sure you put the root of the project (with `manage.py`) directly in the
 the root of your project, and the `STATIC_ROOT`/`STATIC_URL` variables will be changed
 to work in the environment configuration. For now, only SQLite will work for importing.
 
-<<<<<<< HEAD
 Requirements:
 
-* Vagrant 1.8+
+* Vagrant 1.8.4+
 
-Get Started:
-=======
 # Get Started:
->>>>>>> f1812802e9bbe1d4c39856cc34d274f027d60871
 
 * Install [Vagrant 1.8+](https://www.vagrantup.com/).
 * Clone this repository:
