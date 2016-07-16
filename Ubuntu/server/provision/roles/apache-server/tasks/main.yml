@@ -7,6 +7,6 @@
   become_method: sudo
 
 - name: VirtualHost will be configured.
-  copy: src=000-default.conf dest=/etc/apache2/sites-available/000-default.conf
+  copy: src=virtualhost.conf dest=/etc/apache2/sites-available/000-default.conf
   become: yes
   become_method: sudo

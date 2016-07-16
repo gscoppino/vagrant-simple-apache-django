@@ -1,1 +1,1 @@
-vagrant ssh --command ". /home/vagrant/project_env/bin/activate && python /vagrant/backend/manage.py $1" || echo "VM must be running and project must exist!"
+vagrant ssh --command ". /home/vagrant/project_env/bin/activate && python /vagrant/server/app/manage.py '$@'" || echo "VM must be running and project must exist!"
