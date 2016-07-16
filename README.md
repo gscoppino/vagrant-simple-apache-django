@@ -22,6 +22,8 @@ to work in the environment configuration. For now, only SQLite will work for imp
 Requirements:
 
 * Vagrant 1.8.4+
+* VirtualBox 5.0.x (until [this issue](https://github.com/mitchellh/vagrant/issues/7593)
+has been resolved).
 
 # Get Started:
 
