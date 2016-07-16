@@ -19,6 +19,12 @@ sure you put the root of the project (with `manage.py`) directly in the
 the root of your project, and the `STATIC_ROOT`/`STATIC_URL` variables will be changed
 to work in the environment configuration. For now, only SQLite will work for importing.
 
+Requirements:
+
+* Vagrant 1.8.4+
+* VirtualBox 5.0.x (until [this issue](https://github.com/mitchellh/vagrant/issues/7593)
+has been resolved).
+
 # Get Started:
 
 * Install [Vagrant 1.8+](https://www.vagrantup.com/).
